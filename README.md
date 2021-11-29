@@ -70,6 +70,8 @@ voice service voip
  modem passthrough nse codec g711ulaw
  trace
   shutdown
+  ! RECOMENDED TO BE SHUTDOWN
+  ! NO SHUT DURING SETUP/DEBUG PROCESS
  sip
   header-passing
   registrar server expires max 600 min 60
