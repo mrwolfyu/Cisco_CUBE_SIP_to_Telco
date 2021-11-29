@@ -287,9 +287,9 @@ regexp {tel:\+([0-9]+)} $numero1 w numero
 
 if { [regexp {381113333417} $numero ]} { set numero "1017"}
 # HERE WE ARE USING TCL TO TRANSFORM NUMBER, IT CAN ALSO BE REGEX "3811133334(..)" to-> "10\1"
-# IT CAN NOT BE DONE USING VOICE TRANSLATION PROFILES. We also need to create
-# new incoming dial-peer matching new (translated) number because "default" peer would be match without 
-# incoming COR list (keys). In this case we need to add dial-peer (eg 21) with incoming-called number ^1017$
+# IT CAN NOT BE DONE USING VOICE TRANSLATION PROFILES. 
+# Also, we  need to create new incoming dial-peer matching new (translated) number because "default" peer would be match 
+# without incoming COR list (keys). In this case, we need to add dial-peer (eg 21) with incoming-called number ^1017$
 # and on that dial-peer we apply cor list same as on dial-peer 20.
 # Or, we can just change COR lists on our "default" dial-peer (DP 10) to match COR lists configured under DP 20.
 
@@ -356,5 +356,9 @@ fsm define fsm CALL_INIT
 ## COR list
 
 Regarding COR lists, I like to do it in two steps. First step would be creating incoming and outgoing COR lists with uniq keys (incoming) and uniq  locks (outgoing). This way nothing is working by default because every incoming dial-peer have only one uniq key that can't unlock any of outgoing dial-peers. Then in step 2 I identify for each incoming dial-peer what would be allowed outgoing dial-peer. Only then I add "keys" to incoming COR list for that incoming dial-peer to match only allowed outgoing "locks". 
+
+## Note to CISCO
+
+It would be great if we could match incoming SIP dial-peer based on source address, address of peer SIP server. Like it is done in CUCM.
 
 ### That is it folks.
