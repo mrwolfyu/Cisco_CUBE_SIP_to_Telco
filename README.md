@@ -49,7 +49,7 @@ a=fmtp:101 0-15
 
 ```
 
-In sample above SIP RquestURI is "INVITE sip:381113333400@10.0.0.1:5060 SIP/2.0" and To filed is "To: "381113333488 381113333488"<sip:381113333488@ims.telco-example-domain.com>;cscf" while from filed is "From: <sip:0117778888@sip1.telco-example-domain.com;user=phone>;tag=45345345345-345345345-".
+In sample above SIP RquestURI is "INVITE sip:381113333400@10.0.0.1:5060 SIP/2.0" and To filed is "To: "381113333488 381113333488"<sip:381113333488@ims.telco-example-domain.com>;cscf", while from filed is "From: <sip:0117778888@sip1.telco-example-domain.com;user=phone>;tag=45345345345-345345345-".
 
 
 ## Solution 1
