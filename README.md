@@ -4,7 +4,7 @@ Cisco CUBE SIP to Telco
 
 ## Problem
 
-When Telco provider is routing traffic based on SIP _To:_ field, not based on SIP _RequestURI_ field, cisco gateway gets only pilot number and can't route call to real destination.
+When a Telco provider routes traffic based on the SIP To field (not on the SIP RequestURI field) Cisco gateway gets only the pilot number and can't route that call to the right destination.
 
 SIP INVITE sample:
 ```
@@ -49,12 +49,12 @@ a=fmtp:101 0-15
 
 ```
 
-In sample above SIP RquestURI is __"INVITE sip:381113333400@10.0.0.1:5060 SIP/2.0"__ and To filed is __"To: "381113333488 381113333488"<sip:381113333488@ims.telco-example-domain.com>;cscf"__, while From filed is __"From: <sip:0117778888@sip1.telco-example-domain.com;user=phone>;tag=45345345345-345345345-"__.
+In the sample above SIP RequestURI is __"INVITE sip:381113333400@10.0.0.1:5060 SIP/2.0"__ and To filed is __"To: "381113333488 381113333488"<sip:381113333488@ims.telco-example-domain.com>;cscf"__, while From filed is __"From: <sip:0117778888@sip1.telco-example-domain.com;user=phone>;tag=45345345345-345345345-"__.
 
 
 ## Solution 1
 
-Based on this example it is needed to get _To_ filed and copy it to _RequestURI_. On newer IOS version it can be done using sip profiles and on older IOS versions TCL script is needed (Solution 2).
+Based on this example, we need to get _To_ filed and copy it to _RequestURI_. On newer versions of IOS this can be done using a sip profiles, and on older versions of IOS, a TCL script is required (Solution 2).
 
 
 ```
@@ -242,7 +242,7 @@ sip-ua
 
 ## Solution 2
 
-In case of an older IOS we need to use TCL script
+In the case of older IOS, we need to use TCL script.
 
 IOS SAMPLE:
 ```
