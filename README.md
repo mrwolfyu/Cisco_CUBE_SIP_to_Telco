@@ -7,7 +7,7 @@ Cisco CUBE SIP to Telco
 When Telco provider is routing trafic based on SIP To: field, not based on SIP URI field, cisco gateway get only pilot number and can't route call to real destination.
 
 SIP INVITE sample:
-```
+```ios
 INVITE sip:381113333400@10.0.0.1:5060 SIP/2.0
 Via: SIP/2.0/UDP 10.10.10.10:5060;branch=dfskjgfghjgyufuygf.1
 To: "381113333488 381113333488"<sip:381113333488@ims.telco-example-domain.com>;cscf
