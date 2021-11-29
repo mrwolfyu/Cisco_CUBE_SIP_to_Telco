@@ -4,7 +4,7 @@ Cisco CUBE SIP to Telco
 
 ## Problem
 
-When Telco provider is routing trafic based on SIP To: field, not based on SIP URI field, cisco gateway get only pilot number and can't route call to real destination.
+When Telco provider is routing traffic based on SIP _To:_ field, not based on SIP _RequestURI_ field, cisco gateway gets only pilot number and can't route call to real destination.
 
 SIP INVITE sample:
 ```
@@ -35,7 +35,7 @@ P-Called-Party-ID: <sip:381113333400@ims.telco-example-domain.com>
 Recv-Info: x-broadworks-client-session-info
 
 v=0
-o=BroadWorks 2104998929 1 IN IP4 10.10.10.10
+o=BroadWorks 2104918889 1 IN IP4 10.10.10.10
 s=-
 c=IN IP4 10.10.10.10
 t=0 0
@@ -54,7 +54,7 @@ In sample above SIP RquestURI is __"INVITE sip:381113333400@10.0.0.1:5060 SIP/2.
 
 ## Solution 1
 
-Based on this example it is needed to get To filed and copy it to RequestURI. On newer IOS version it can be done using sip profiles and on older version TCL script is needed (Solution 2).
+Based on this example it is needed to get _To_ filed and copy it to _RequestURI_. On newer IOS version it can be done using sip profiles and on older IOS versions TCL script is needed (Solution 2).
 
 
 ```
