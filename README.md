@@ -63,7 +63,7 @@ voice service voip
   ipv4 10.10.10.10 255.255.255.255
   ipv4 10.200.200.200 255.255.255.255
  rtp-port range 8000 48198
- ! PORT RANGE - JUST TO BE SHURE, FOR FIREWALL CONFIGURATION
+ ! PORT RANGE - JUST TO BE SURE, FOR FIREWALL CONFIGURATION
  allow-connections sip to sip
  no supplementary-service sip moved-temporarily
  no supplementary-service sip refer
