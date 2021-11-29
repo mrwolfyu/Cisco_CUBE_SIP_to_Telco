@@ -272,7 +272,7 @@ dial-peer voice 20 voip
 
 TCL Script:
 ```tcl
- proc setup { } {
+proc setup { } {
 
 leg proceeding leg_incoming
 
