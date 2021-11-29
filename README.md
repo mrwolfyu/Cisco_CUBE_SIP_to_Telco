@@ -107,14 +107,14 @@ ip route 10.10.10.10 255.255.255.255 10.0.0.2
 ip host ims.telco-example-domain.com 10.10.10.10
 !
 !
-ip access-list extended acl_TELEKOM_SIP_IN
+ip access-list extended acl_TELCO_SIP_IN
  10 permit icmp any any echo-reply
  20 permit tcp any host 10.0.0.1 established
  30 permit udp host 10.10.10.10 host 10.0.0.1 eq 5060
  40 permit udp host 10.10.10.10 host 10.0.0.1 range 16384 32767
  50 permit udp host 10.10.10.10 host 10.0.0.1 range 8000 48198
  60 deny   ip any any log
-ip access-list extended acl_TELEKOM_SIP_OUT
+ip access-list extended acl_TELCO_SIP_OUT
  10 permit ip host 10.0.0.1 any
  20 deny   ip any any log
 
