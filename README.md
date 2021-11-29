@@ -287,8 +287,8 @@ regexp {tel:\+([0-9]+)} $numero1 w numero
 
 if { [regexp {381113333417} $numero ]} { set numero "1017"}
 # HERE WE ARE USING TCL TO TRANSFORM NUMBER, IT CAN ALSO BE REGEX "3811133334(..)" to-> "10\1"
-# IT CAN NOT BE DONE USING VOICE TRANSLATION PROFILES. Well actualy it can, but we need to create new dial-peer
-# matching new (translated) number
+# IT CAN NOT BE DONE USING VOICE TRANSLATION PROFILES. Well actualy it can, but we need to create
+# new incoming dial-peer matching new (translated) number
 
 puts "\n >>>>> MY-TCL-SCRIPT: To = $To ; numero = $numero \n"
 leg setup $numero callInfo leg_incoming
