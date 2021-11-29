@@ -86,9 +86,8 @@ voice class codec 1
 voice class sip-profiles 100
  rule 1 request ANY sip-header To copy "sip:(.*)@" u01
  rule 2 request ANY sip-header SIP-Req-URI modify "(.*) sip:.*@(.*)" "\1 sip:\u01@\2"
-
-
-
+!
+!
 interface GigabitEthernet0/0/0
  bandwidth 100000
  ip address 10.0.0.1 255.255.255.252
@@ -99,8 +98,9 @@ interface GigabitEthernet0/0/0
  ip access-group acl_TELCO_SIP_OUT out
 ! HERE USING ZONE BASED FIREWALL IS RECOMENDED, BUT IT IS GOOD ENOUGHT
 
-ip route 10.10.10.10 255.255.255.255 10.0.0.2 ! route to telco sip server
-
+ip route 10.10.10.10 255.255.255.255 10.0.0.2
+! route to telco sip server
+!
 ip access-list extended acl_TELEKOM_SIP_IN
  10 permit icmp any any echo-reply
  20 permit tcp any host 10.0.0.1 established
@@ -112,7 +112,7 @@ ip access-list extended acl_TELEKOM_SIP_OUT
  10 permit ip host 10.0.0.1 any
  20 deny   ip any any log
 
-
+!
 dial-peer voice 10 voip
  ! INCOMING PEER THAT IS MATCHIN BY DEFAULT (JUST IN CASE DIALPEER), 
  ! COR LIST ARE MAKING SHURE THAT NO OUTGOING DP IS MATCHED
