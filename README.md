@@ -290,7 +290,8 @@ if { [regexp {381113333417} $numero ]} { set numero "1017"}
 # IT CAN NOT BE DONE USING VOICE TRANSLATION PROFILES. We also need to create
 # new incoming dial-peer matching new (translated) number because "default" peer would be match without 
 # incoming COR list (keys). In this case we need to add dial-peer (eg 21) with incoming-called number ^1017$
-# and on that dial-peer we apply cor list same as on dial-peer 20
+# and on that dial-peer we apply cor list same as on dial-peer 20.
+# Or, we can just change COR lists on our "default" dial-peer (DP 10) to match COR lists configured under DP 20.
 
 puts "\n >>>>> MY-TCL-SCRIPT: To = $To ; numero = $numero \n"
 leg setup $numero callInfo leg_incoming
