@@ -92,7 +92,6 @@ voice class sip-profiles 100
 !
 !
 interface GigabitEthernet0/0/0
- bandwidth 100000
  ip address 10.0.0.1 255.255.255.252
  no ip redirects
  no ip unreachables
