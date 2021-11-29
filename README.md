@@ -348,7 +348,7 @@ requiredversion 2.0
 set fsm(CALL_INIT,ev_setup_indication) "setup GETDEST"
 set fsm(any_state,ev_disconnected) "disco same_state"
 set fsm(CALLDISCONNECT,ev_disconnect_done) "cleanup same_state"
-set fsm(any_state,ev_setup_done)                      "act_SetupDone          same_state"
+set fsm(any_state,ev_setup_done) "act_SetupDone same_state"
 
 fsm define fsm CALL_INIT
 ```
