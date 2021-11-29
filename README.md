@@ -219,7 +219,8 @@ dial-peer voice 200 voip
  dtmf-relay sip-notify sip-kpml rtp-nte
  no vad
 !
-
+! COR LIST ARE HERE TO MAKE SURE THAT INCOMING LEG OVER TELCO PROVIDER
+! CAN ONLY BE ROUTED TO OUR LOCAL SIP SERVER AND VICE VERSA
 gateway
  timer receive-rtp 1200
 !
@@ -235,7 +236,7 @@ sip-ua
 
 ## Solution 2
 
-In case of an older IOS we to use TCL script
+In case of an older IOS we need to use TCL script
 
 IOS SAMPLE:
 ```
@@ -280,6 +281,8 @@ regexp {tel:\+([0-9]+)} $numero1 w numero
 
 if { [regexp {381113333417} $numero ]} { set numero "1017"}
 # HERE WE ARE USING TCL TO TRANSFORM NUMBER, IT CAN ALSO BE REGEX "3811133334(..)" to-> "10\1"
+# IT CAN NOT BE DONE USING VOICE TRANSLATION PROFILES. Well actualy it can, but we need to create new dial-peer
+# matching new (translated) number
 
 puts "\n >>>>> MY-TCL-SCRIPT: To = $To ; numero = $numero \n"
 leg setup $numero callInfo leg_incoming
