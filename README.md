@@ -49,7 +49,7 @@ a=fmtp:101 0-15
 
 ```
 
-In sample above SIP RquestURI is "INVITE sip:381113333400@10.0.0.1:5060 SIP/2.0" and To filed is "To: "381113333488 381113333488"<sip:381113333488@ims.telco-example-domain.com>;cscf", while from filed is "From: <sip:0117778888@sip1.telco-example-domain.com;user=phone>;tag=45345345345-345345345-".
+In sample above SIP RquestURI is __"INVITE sip:381113333400@10.0.0.1:5060 SIP/2.0"__ and To filed is __"To: "381113333488 381113333488"<sip:381113333488@ims.telco-example-domain.com>;cscf"__, while From filed is __"From: <sip:0117778888@sip1.telco-example-domain.com;user=phone>;tag=45345345345-345345345-"__.
 
 
 ## Solution 1
@@ -63,6 +63,7 @@ voice service voip
   ipv4 10.10.10.10 255.255.255.255
   ipv4 10.200.200.200 255.255.255.255
  rtp-port range 8000 48198
+ ! PORT RANGE - JUST TO BE SHURE, FOR FIREWALL CONFIGURATION
  allow-connections sip to sip
  no supplementary-service sip moved-temporarily
  no supplementary-service sip refer
@@ -102,6 +103,9 @@ interface GigabitEthernet0/0/0
 
 ip route 10.10.10.10 255.255.255.255 10.0.0.2
 ! route to telco sip server
+!
+ip host ims.telco-example-domain.com 10.10.10.10
+!
 !
 ip access-list extended acl_TELEKOM_SIP_IN
  10 permit icmp any any echo-reply
