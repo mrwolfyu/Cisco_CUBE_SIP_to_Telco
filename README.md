@@ -79,7 +79,8 @@ voice service voip
   early-offer forced
   midcall-signaling passthru
   sip-profiles inbound
-  ! INCOMING SIP PROFILE IMPORTANT FOR APPLYING IT ON INCOMNG DIAL-PEER 
+  ! INCOMING SIP PROFILE IMPORTANT FOR APPLYING IT ON INCOMNG DIAL-PEER
+  ! NOT RECOMENDED TO APPLY PROFILE GLOBALY, BETTER PER DIAL-PEER 
 
 voice class codec 1
  codec preference 1 g711alaw
@@ -350,6 +351,18 @@ set fsm(CALLDISCONNECT,ev_disconnect_done) "cleanup same_state"
 set fsm(any_state,ev_setup_done) "act_SetupDone same_state"
 
 fsm define fsm CALL_INIT
+```
+
+## Note
+
+If there is a problem with HOLD or TRANSFER then add following to sip-profile voice class:
+
+```
+!
+ request ACK sdp-header Audio-Attribute modify "recvonly" "sendrecv" 
+ response 200 sdp-header Audio-Attribute modify "recvonly" "sendrecv" 
+ request REINVITE sdp-header Audio-Attribute modify "inactive" "sendrecv" 
+!
 ```
 
 ## COR list
