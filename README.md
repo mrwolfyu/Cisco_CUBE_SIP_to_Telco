@@ -372,6 +372,7 @@ Regarding COR lists, I like to do it in two steps. First step would be creating 
 ## Note to CISCO
 
 [x] It would be great if we could match incoming SIP dial-peer based on source address, address of peer SIP server. Like it is done in CUCM.
+
 THIS IS NOW POSSIBLE. 
 
 ### That is it folks.
