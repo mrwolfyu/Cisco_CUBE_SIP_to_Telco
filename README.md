@@ -99,8 +99,8 @@ interface GigabitEthernet0/0/0
  no ip proxy-arp
  ip access-group acl_TELCO_SIP_IN in
  ip access-group acl_TELCO_SIP_OUT out
-! HERE USING ZONE BASED FIREWALL IS RECOMENDED, BUT IT IS GOOD ENOUGHT
-
+! USING ZONE BASED FIREWALL IS RECOMMENDED HERE, BUT THIS IS GOOD ENOUGH
+!
 ip route 10.10.10.10 255.255.255.255 10.0.0.2
 ! route to telco sip server
 !
@@ -286,7 +286,7 @@ regexp {tel:\+([0-9]+)} $numero1 w numero
 
 
 if { [regexp {381113333417} $numero ]} { set numero "1017"}
-# HERE WE ARE USING TCL TO TRANSFORM NUMBER, IT CAN ALSO BE REGEX "3811133334(..)" to-> "10\1"
+# HERE WE ARE USING TCL TO TRANSFORM NUMBER, IT CAN ALSO BE REGEX "3811133334\(..\)" to-> "10\1"
 # IT CAN NOT BE DONE USING VOICE TRANSLATION PROFILES. 
 # Also, we  need to create new incoming dial-peer matching new (translated) number because "default" peer would be match 
 # without incoming COR list (keys). In this case, we need to add dial-peer (eg 21) with incoming-called number ^1017$
@@ -371,6 +371,7 @@ Regarding COR lists, I like to do it in two steps. First step would be creating 
 
 ## Note to CISCO
 
-It would be great if we could match incoming SIP dial-peer based on source address, address of peer SIP server. Like it is done in CUCM.
+[x] It would be great if we could match incoming SIP dial-peer based on source address, address of peer SIP server. Like it is done in CUCM.
+THIS IS NOW POSSIBLE. 
 
 ### That is it folks.
